@@ -1,0 +1,27 @@
+{
+  "name": "nodejs_2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon main.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/penny271/nodeJs_3.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/penny271/nodeJs_1/issues"
+  },
+  "homepage": "https://github.com/penny271/nodeJs_1#readme",
+  "dependencies": {
+    "ejs": "^3.1.5",
+    "express": "^4.17.1",
+    "express-ejs-layouts": "^2.5.0",
+    "http-status-codes": "^2.1.4",
+    "method-override": "^3.0.0"
+  }
+}
