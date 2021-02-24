@@ -1,13 +1,24 @@
-<h1 id="loading">取得中</h1>
+<h1 id="loading" class="hidden">取得中</h1>
 <div id="container" class="hidden">
   <!-- <div id="container"> -->
-  <h1 id="title">問題<span id="title__num">1</span></h1>
-  <h2 id="genre">[ジャンル]<span id="genre__detail"> Entertainment: Video Games
+  <h1 id="title">問題<span id="title__num">XXX</span></h1>
+  <h2 id="genre">[ジャンル]<span id="genre__detail"> XXX_Entertainment: Video Games
     </span>
   </h2>
-  <h2 id=difficulty>[難易度]<span id=difficulty__detail> SDF
+  <h2 id=difficulty>[難易度]<span id=difficulty__detail> XXX_SDF
     </span></h2>
 </div>
+
+<h3>
+  <!-- ここで一旦、バックエンドから取得したデータを
+  反映させています -->
+  <% formattedQuizzes.forEach((formattedQuiz, index) =>
+  { %>
+<p>
+  <%= index %>: <%= formattedQuiz %>
+</p>
+  <% }) %>
+</h3>
 
 <hr id="quiz">
 <span id="quiz__content">少々お待ち下さい</span>
