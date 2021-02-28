@@ -1,32 +1,38 @@
 <h1 id="loading" class="hidden">取得中</h1>
-<div id="container" class="hidden">
+<div id="container" class="">
   <!-- <div id="container"> -->
-  <h1 id="title">問題<span id="title__num">XXX</span></h1>
-  <h2 id="genre">[ジャンル]<span id="genre__detail"> XXX_Entertainment: Video Games
+  <h1 id="title">問題<span id="title__num">
+      <%= quizNum %>
+    </span></h1>
+  <h2 id="genre">[ジャンル]<span id="genre__detail">
+      <%= category %>
     </span>
   </h2>
-  <h2 id=difficulty>[難易度]<span id=difficulty__detail> XXX_SDF
+  <h2 id=difficulty>[難易度]<span id=difficulty__detail> <%= difficulty %>
     </span></h2>
 </div>
 
-<h3>
-  <!-- ここで一旦、バックエンドから取得したデータを
-  反映させています -->
-  <% formattedQuizzes.forEach((formattedQuiz, index) =>
-  { %>
-<p>
-  <%= index %>: <%= formattedQuiz %>
-</p>
-  <% }) %>
-</h3>
-
 <hr id="quiz">
-<span id="quiz__content">少々お待ち下さい</span>
+<span id="quiz__content0" class="hidden">少々お待ち下さい</span>
+<span id="quiz__content" class=""> <%= quizContent %> </span>
 <hr>
-<ul id="answers" class="hidden">
-  <li id="homeBtn" class="hidden changePage"><button><a href="/">ホームに戻る</a></button></li>
-  <li><button class="choice" data-number="0">dummy</button><br></li><br>
-  <li><button class="choice" data-number="1">dummy</button><br></li><br>
-  <li><button class="choice" data-number="2">dummy</button><br></li><br>
-  <li><button class="choice" data-number="3">dummy</button><br></li><br>
-</ul>
+<form action="/playing/countup" method="post" name="formAnswer">
+    <ul id='answers'>
+      <li id="homeBtn" class="hidden changePage"><button>ホームに戻る</button></li>
+      <li id="startBtn" class='hidden changePage'><button>開始</button></li>
+      <li><button type="" class='choice' data-number="0" type="" value="ABCDEFGHIJK">
+          <%=choice0%><input class="hidden" value="0" name="choice0">
+        </button><br></li><br>
+      <li><button class='choice' data-number='1'>
+          <%=choice1%><input class="hidden" value="1" name="choice1">
+        </button><br></li><br>
+      <li><button class='choice' data-number='2'>
+          <%=choice2%><input class="hidden" value="2" name="choice2">
+        </button><br></li><br>
+      <li><button class='choice' data-number='3'>
+          <%=choice3%><input class="hidden" value="3" name="choice3">
+        </button><br></li><br>
+      <li><br></li><br>
+    </ul>
+
+</form>
