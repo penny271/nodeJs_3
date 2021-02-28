@@ -4,8 +4,6 @@ const fetch = require('node-fetch');
 //-Quizモデル
 const URL = 'https://opentdb.com/api.php?amount=10&type=multiple';
 let quizContents = [];
-let formattedQuizzes = []; //-整形後クイズデータ
-let quizNum = 0;
 
 //- Quizクラスを作成し、整形したQuizオブジェクトを生成
 class Quiz {
@@ -26,15 +24,14 @@ class Quiz {
         difficulty: loadedQuestion.difficulty,
       };
 
-      //¥ スプレッド演算子使用
       const multipleChoices = [...loadedQuestion.incorrect_answers];
 
       //正解の解答を配列に入れ、splice()で挿入したランダムな番号を正解とする
       formattedQuestion.answer = Math.floor(Math.random() * 4);
       multipleChoices.splice(
-        formattedQuestion.answer, //-例: 2
+        formattedQuestion.answer,
         0,
-        loadedQuestion.correct_answer //-例: "correct_answer": "Central Processing Unit",
+        loadedQuestion.correct_answer
       );
 
       //formattedQuestionに問題を全て入れ、それぞれに
@@ -44,7 +41,7 @@ class Quiz {
       });
 
       return formattedQuestion;
-    }); //-map終わり
+    });
   }
 }
 
@@ -55,8 +52,6 @@ module.exports = {
     const quizData = await result.json();
     const formattedQuiz = new Quiz(quizData);
     formattedQuiz.formatQuiz();
-
-    // console.log('⭐', quizContents); //!配列
     return quizContents;
   },
 };

@@ -40,13 +40,11 @@ const fetchDom = (async () => {
   domObj = await fetchDom;
 })();
 
+// quiz.jsをロードする
 const formattedQuiz = require('../models/quiz');
-let quizContents; //!APIの内容を模範解答のような形式に変更したものを収納
-let currentQuestion; //!現在解いている問題を表示
+let quizContents; //!整形後のquiz10問を保持した配列
 let quizNum = 1; //!現在の問題数を表示 1から始まる
 let currentQuiz = 0; //!何番目の問題かを管理
-let duplicatedQuestions = [];
-let score = 0;
 
 module.exports = {
   //- indexView res.json()
@@ -62,29 +60,18 @@ module.exports = {
 
   ProceedQuiz: async (req, res, next) => {
     quizContents = await formattedQuiz.fetchQuiz();
-    // console.log(quizContents);
     res.locals.quizNum = quizNum;
-    console.log('■req', req.body.choice0);
-    console.log('■req', req.body.choice1);
-    console.log('■req', req.body.choice3);
-    console.log('■req', req.body.choice2);
-
-    console.log(domObj.genreDetail.textContent);
     res.locals.category = quizContents[currentQuiz].category;
 
     res.locals.difficulty = quizContents[currentQuiz].difficulty;
     res.locals.question = quizContents[currentQuiz].question;
-
-    console.log('⭐', domObj.quizContent.innerHTML);
-    console.log('⭐', quizContents[0].question);
-    console.log('⭐確認中', domObj.quizContent.textContent);
 
     //- クイズの設問内容をejsで表示
     //* innerHTMLでエスケープ文字を有効にしている
     domObj.quizContent.innerHTML = quizContents[0].question;
     res.locals.quizContent = domObj.quizContent.innerHTML;
 
-    //- form.action
+    //- 選択肢を取得し、viewで使えるようローカル変数に保存
     domObj.choices.forEach((choice, index) => {
       res.locals[`choice${index}`] = quizContents[0][`choice${index}`];
     });
