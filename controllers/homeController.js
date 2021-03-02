@@ -19,6 +19,7 @@ const fetchDom = (async () => {
   const difficultyDetail = document.getElementById('difficulty__detail'); //難易度詳細
   const quizContent = document.getElementById('quiz__content'); //クイズの設問内容
   const choices = Array.from(document.getElementsByClassName('choice'));
+  const hiddenAnswer = document.getElementById('hiddenAnswer'); //隠し要素のクイズの正解番号
 
   //- playing.ejsの上記DOMをオブジェクトで一元管理
   const domObj = {
@@ -30,6 +31,7 @@ const fetchDom = (async () => {
     difficultyDetail,
     quizContent,
     choices,
+    hiddenAnswer,
   };
 
   return domObj;
@@ -65,6 +67,12 @@ module.exports = {
 
     res.locals.difficulty = quizContents[currentQuiz].difficulty;
     res.locals.question = quizContents[currentQuiz].question;
+
+    //- answer
+    res.locals.answer = quizContents[currentQuiz].answer;
+
+    //- quizContents
+    res.locals.quizContents = quizContents;
 
     //- クイズの設問内容をejsで表示
     //* innerHTMLでエスケープ文字を有効にしている
