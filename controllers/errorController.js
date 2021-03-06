@@ -4,6 +4,7 @@ const httpStatus = require('http-status-codes');
 
 module.exports = {
   pageNotFoundError: (req, res, next) => {
+    // return;
     res.render('error');
   },
 

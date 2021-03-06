@@ -17,7 +17,8 @@ a {
 }
 
 #title,
-#loading {
+#loading,
+.margin-tb {
   margin: 1rem 0;
 }
 

@@ -1,6 +1,39 @@
-<h1 id="loading">ようこそ</h1>
+<div id="home-container">
+  <h1 class="margin-tb">ようこそ</h1>
 
-<hr id='quiz'>
-<span id='quiz__content'>以下のボタンをクリック</span>
-<hr>
-  <button id="start"><a href="/playing/1" >開始</a></button>
+  <hr id='quiz'>
+  <span>以下のボタンをクリック</span>
+  <hr>
+  <!-- <button id="start"><a href="/playing">開始</a></button> -->
+  <button id="start">開始</button>
+</div>
+
+<div id="container" class="hidden">
+  <h1 id="title">問題<span id="title__num">1</span></h1>
+  <h2 id="genre">[ジャンル]<span id="genre__detail"> const packageName = require('packageName');
+    </span>
+  </h2>
+  <h2 id=difficulty>[難易度]<span id=difficulty__detail> SDF
+    </span></h2>
+</div>
+
+<!-- ロード中の文言 -->
+<div id="loading-content" class="hidden">
+  <h1 class="margin-tb">取得中</h1>
+  <hr id='quiz'>
+  <span>少々お待ち下さい</span>
+  <hr>
+</div>
+
+<!-- 問題文 apiでデータ取得後表示 -->
+<ul id='answers' class="hidden">
+    <hr id='quiz'>
+    <span id='quiz__content'>問題内容</span>
+    <hr>
+  <li id="homeBtn" class="hidden changePage"><button><a href="">ホームに戻る</a></button></li>
+  <li id="startBtn" class='hidden changePage'><button>開始</button></li>
+  <li><button class='choice' data-number="0">dummy</button><br></li><br>
+  <li><button class='choice' data-number='1'>dummy</button><br></li><br>
+  <li><button class='choice' data-number='2'>dummy</button><br></li><br>
+  <li><button class='choice' data-number='3'>dummy</button><br></li><br>
+</ul>

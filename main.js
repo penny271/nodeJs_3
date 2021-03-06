@@ -25,17 +25,10 @@ router.use(bodyParser.json());
 router.use(express.json());
 
 // Homeページへ飛ぶ
-homeController.ProceedQuiz,
-  router.get('/', homeController.goToHome);
+homeController.ProceedQuiz, router.get('/', homeController.goToHome);
 
-//- ローカル変数にクイズデータを代入後、
-// クイズプレイ中のページへ飛びクイズデータを表示
-// router.get('/playing', homeController.ProceedQuiz, homeController.goToPlaying);
-router.get(
-  '/playing/:currentQuiz',
-  homeController.ProceedQuiz,
-  homeController.goToPlaying
-);
+// 開始ボタンが押されたときの挙動
+router.get('/playing/render', homeController.proceedQuiz);
 
 // エラー処理
 router.use(errorController.pageNotFoundError);
