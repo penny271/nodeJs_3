@@ -3,7 +3,6 @@
 const fetch = require('node-fetch');
 //-Quizモデル
 const URL = 'https://opentdb.com/api.php?amount=10&type=multiple';
-let quizContents = [];
 
 //- Quizクラスを作成し、整形したQuizオブジェクトを生成
 class Quiz {
@@ -15,7 +14,7 @@ class Quiz {
   //- アプリケーションで使えるようにAPIから
   //- 取得したデータを整形する
   formatQuiz() {
-    quizContents = this.rawQuizContents.results.map(loadedQuestion => {
+    return this.rawQuizContents.results.map(loadedQuestion => {
       //-▼オブジェクト作成 最終的に
       //- mapで配列の要素として配列に入る
       const formattedQuestion = {
@@ -51,7 +50,7 @@ module.exports = {
     const result = await fetch(URL);
     const quizData = await result.json();
     const formattedQuiz = new Quiz(quizData);
-    formattedQuiz.formatQuiz();
-    return quizContents;
+    const finalizedFormattedQuiz = formattedQuiz.formatQuiz();
+    return finalizedFormattedQuiz;
   },
 };
